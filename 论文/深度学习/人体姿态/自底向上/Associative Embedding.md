@@ -26,20 +26,36 @@
 
 ### 实现细节
 #### 应用于多人姿态估计
-- 多人姿态估计和单人姿态估计的区别：
+- **多人姿态估计和单人姿态估计的区别**：
 	1. 单人姿态估计先定位出人，然后检测出该人的所有关键点，网络输出的heatmap对于每个关键点只有一个峰值。
 	2. 多人姿态估计产生的某个部位的heatmap则有多个峰值。（多个峰值对应多个人的该部位的关键点的峰值）
-- 使用tags heatmap和关键点heatmap一一对应
+- **使用tags heatmap和关键点heatmap一一对应**
 	1. tags heatmap同样是像素级的，每个关键点的位置都有一个对应的tag值。
 	2. 假如网络输出的channels数量为2m， 则1m为关键点heatmap，另外1m为tags heatmap。
 - 使用非极大值抑制(nms)选择detection heatmap中的峰值关键点，然后检索对应tag heatmap中和峰值关键点相同像素位置的值，该值即为对应关键点的tag。同一个人的各个部位的tag会比较接近，不同的人各个部位的tag则相差较远。
 
 ![[Pasted image 20220412114802.png]]
 	*如上图所示，同一个人的不同部位的embedding value很接近，不同的人的embedding value则相差较远，将图片中的人都划分开来。*
-- 为了训练网络提出检测损失和分组损失
+- **为了训练网络提出检测损失和分组损失**
 	- 检测损失（detection loss）：
 	计算预测出的heatmap和ground truth的heatmap之间的均方误差（mean square error，MSE）
 	- 分组损失（group loss）：
 		1. 分组损失用来评估网络输出的预测tags和ground truth中各个人的分组关系的对应情况。tags描述和真实的人的分组情况越接近，分组损失越低。
-		2. 遍历
+		2. 实现时最简单的方法是遍历所有tags，每个tag依次和其余所有tags作比较。这种暴力方法时间复杂度过高。因此提出了reference embedding。
+		3. reference embedding
+			思路很简单，就是同一个人的所有关节点的embedding算一个均值Me，然后同一个人的预测tag和Me去计算损失，不同的人用各自的Me来计算损失。
+			
+		![[Pasted image 20220412144239.png]]
+									*分组损失函数*
 
+- **分组算法**
+1. 网络输出所有关键点的heatmap和相应的tags heatmap
+2. 从某个部位出发
+	1. 使用nms选择该部位heatmap中峰值最高的几个点，有几个点说明图片中有几个人，组成了person pool
+	2. 接着按照部位进行遍历，对heatmap中的几个峰值，用tag和person pool里的tags进行匹配，找到最匹配的即说明该峰值属于某人（两个tag必须计算低于某个阈值才认为匹配）。为了优先匹配detection scores最高的点，提出了maximum matching，即将tag distance和detection scores联合考虑。
+	3. 如果有某个tag没有匹配上，则认为是一个新的人，并将这个新的人加入person pool（这是因为在遮挡的条件下有些人只检测出部分关键点）
+3. 直到所有部位遍历完毕，所有的tag都group到某个人中，则分组完毕。
+
+**解决尺度变换问题**
+由于一张图片中的人有大有小，对于较小的人体，heatmap的尺寸太小的话，最终检测效果不好。
+为了解决这个问题，使用多尺度测试（multi scale test），即使用不同分辨率大小的多个heatmap，然后进行融合。对于tags，将多个同一位置的多个不同尺度得到的tag组成vector，后面的分组等计算都变成vector计算。
