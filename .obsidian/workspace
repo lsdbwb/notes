@@ -1,0 +1,136 @@
+{
+  "main": {
+    "id": "6034ea348c94400d",
+    "type": "split",
+    "children": [
+      {
+        "id": "5e7815691da55ffc",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "论文/深度学习/人体姿态/自底向上/Associative Embedding.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "0441dbe53155ae8e",
+    "type": "split",
+    "children": [
+      {
+        "id": "f5db57df8d79820d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9fcaf2dfc49d74e7",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "4eff7262ac782e68",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "1ff1298d72456644",
+    "type": "split",
+    "children": [
+      {
+        "id": "c720df9c50a7cedd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1bd657b78445b4e3",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "论文/深度学习/人体姿态/自底向上/Associative Embedding.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "b377304257f79da6",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "论文/深度学习/人体姿态/自底向上/Associative Embedding.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "d708877953d09404",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "d494a0e424f3e76d",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "论文/深度学习/人体姿态/自底向上/Associative Embedding.md"
+              }
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "active": "5e7815691da55ffc",
+  "lastOpenFiles": [
+    "论文/深度学习/人体姿态/自底向上/Associative Embedding.md",
+    "论文/深度学习/人体姿态/自底向上/Pasted image 20220412114555.png",
+    "论文/深度学习/人体姿态/知识蒸馏/OKDHP.md",
+    "论文/深度学习/数据集/COCO/COCOAPI/mask.py.md",
+    "论文/深度学习/人体姿态/知识蒸馏/attachments/Pasted image 20220330112648.png",
+    "论文/深度学习/人体姿态/知识蒸馏/attachments/Pasted image 20220330110615.png",
+    "操作系统/内存管理/内存管理malloc.md",
+    "操作系统/内存管理malloc.md",
+    "操作系统/attachments/Pasted image 20220328111755.png",
+    "未命名思维导图.md"
+  ]
+}
