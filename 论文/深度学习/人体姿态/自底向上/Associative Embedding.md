@@ -48,13 +48,14 @@
 		![[Pasted image 20220412144239.png]]
 									*分组损失函数*
 
-- **分组算法**
+- **分组算法** ^182e9d
 1. 网络输出所有关键点的heatmap和相应的tags heatmap
 2. 从某个部位出发
 	1. 使用nms选择该部位heatmap中峰值最高的几个点，有几个点说明图片中有几个人，组成了person pool
 	2. 接着按照部位进行遍历，对heatmap中的几个峰值，用tag和person pool里的tags进行匹配，找到最匹配的即说明该峰值属于某人（两个tag必须计算低于某个阈值才认为匹配）。为了优先匹配detection scores最高的点，提出了maximum matching，即将tag distance和detection scores联合考虑。
 	3. 如果有某个tag没有匹配上，则认为是一个新的人，并将这个新的人加入person pool（这是因为在遮挡的条件下有些人只检测出部分关键点）
 3. 直到所有部位遍历完毕，所有的tag都group到某个人中，则分组完毕。
+^fafafaf
 
 **解决尺度变换问题**
 由于一张图片中的人有大有小，对于较小的人体，heatmap的尺寸太小的话，最终检测效果不好。
