@@ -36,9 +36,10 @@
 
 ![[Pasted image 20220412114802.png]]
 	*如上图所示，同一个人的不同部位的embedding value很接近，不同的人的embedding value则相差较远，将图片中的人都划分开来。*
-- **为了训练网络提出检测损失和分组损失**
+- **为了训练网络提出检测损失和分组损失** ^16c461
 	- 检测损失（detection loss）：
 	计算预测出的heatmap和ground truth的heatmap之间的均方误差（mean square error，MSE）
+	![[Pasted image 20220415111214.png]]
 	- 分组损失（group loss）：
 		1. 分组损失用来评估网络输出的预测tags和ground truth中各个人的分组关系的对应情况。tags描述和真实的人的分组情况越接近，分组损失越低。
 		2. 实现时最简单的方法是遍历所有tags，每个tag依次和其余所有tags作比较。这种暴力方法时间复杂度过高。因此提出了reference embedding。
@@ -46,7 +47,7 @@
 			思路很简单，就是同一个人的所有关节点的embedding算一个均值Me，然后同一个人的预测tag和Me去计算损失，不同的人用各自的Me来计算损失。
 			
 		![[Pasted image 20220412144239.png]]
-									*分组损失函数*
+									*分组损失函数* ^de8542
 
 - **分组算法** ^182e9d
 1. 网络输出所有关键点的heatmap和相应的tags heatmap
