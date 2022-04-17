@@ -1,4 +1,6 @@
 {
   "baseFontSize": 16,
-  "cssTheme": "Typomagical"
+  "cssTheme": "ITS Theme",
+  "theme": "moonstone",
+  "textFontFamily": "Bell MT"
 }
