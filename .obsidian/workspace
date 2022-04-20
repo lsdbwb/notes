@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "C++/多线程/c++并发编程实践/在线程间共享数据.md",
+            "file": "论文/深度学习/人体姿态/自底向上/YoloPose/YoloPose.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "C++/多线程/c++并发编程实践/在线程间共享数据.md",
+                "file": "论文/深度学习/人体姿态/自底向上/YoloPose/YoloPose.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,7 +86,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "C++/多线程/c++并发编程实践/在线程间共享数据.md",
+                "file": "论文/深度学习/人体姿态/自底向上/YoloPose/YoloPose.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -109,7 +109,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "C++/多线程/c++并发编程实践/在线程间共享数据.md"
+                "file": "论文/深度学习/人体姿态/自底向上/YoloPose/YoloPose.md"
               }
             }
           }
@@ -122,15 +122,15 @@
   },
   "active": "60acba6cb3fd627d",
   "lastOpenFiles": [
+    "论文/深度学习/人体姿态/自底向上/YoloPose/YoloPose.md",
+    "C++/多线程/c++并发编程实践/线程间同步.md",
     "C++/多线程/c++并发编程实践/在线程间共享数据.md",
-    "Excalidraw/Drawing 2022-04-15 17.32.15.excalidraw.md",
-    "Excalidraw/Drawing 2022-04-15 17.32.15.excalidraw.png",
-    "node.md",
-    "未命名思维导图.md",
-    "未命名.md",
-    "论文/深度学习/人体姿态/自底向上/Higher HRNET/训练时流程.md",
+    "论文/深度学习/目标检测/基础/各种损失函数.md",
+    "论文/深度学习/人体姿态/自底向上/YoloPose/attachments/Pasted image 20220419150609.png",
     "论文/深度学习/人体姿态/自底向上/Associative Embedding.md",
+    "论文/深度学习/人体姿态/自底向上/Higher HRNET/训练时流程.md",
     "论文/深度学习/人体姿态/自底向上/Higher HRNET/测试时后处理流程.md",
-    "编译链接/运行库/5、系统调用.md"
+    "论文/深度学习/人体姿态/自底向上/Pasted image 20220412114555.png",
+    "论文/深度学习/人体姿态/自底向上/attachments/Pasted image 20220412114802.png"
   ]
 }
