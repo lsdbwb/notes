@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "60acba6cb3fd627d",
+        "id": "e2681ca20b139f60",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "论文/深度学习/人体姿态/自底向上/YoloPose/YoloPose.md",
+            "file": "C++/多线程/c++并发编程实践/线程间同步.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "论文/深度学习/人体姿态/自底向上/YoloPose/YoloPose.md",
+                "file": "C++/多线程/c++并发编程实践/线程间同步.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,7 +86,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "论文/深度学习/人体姿态/自底向上/YoloPose/YoloPose.md",
+                "file": "C++/多线程/c++并发编程实践/线程间同步.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -109,7 +109,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "论文/深度学习/人体姿态/自底向上/YoloPose/YoloPose.md"
+                "file": "C++/多线程/c++并发编程实践/线程间同步.md"
               }
             }
           }
@@ -120,17 +120,17 @@
     "direction": "horizontal",
     "width": 300
   },
-  "active": "60acba6cb3fd627d",
+  "active": "e2681ca20b139f60",
   "lastOpenFiles": [
-    "论文/深度学习/人体姿态/自底向上/YoloPose/YoloPose.md",
     "C++/多线程/c++并发编程实践/线程间同步.md",
     "C++/多线程/c++并发编程实践/在线程间共享数据.md",
+    "Excalidraw/Task.excalidraw.md",
+    "论文/深度学习/人体姿态/评估指标.md",
+    "论文/深度学习/人体姿态/自底向上/YoloPose/YoloPose.md",
     "论文/深度学习/目标检测/基础/各种损失函数.md",
     "论文/深度学习/人体姿态/自底向上/YoloPose/attachments/Pasted image 20220419150609.png",
     "论文/深度学习/人体姿态/自底向上/Associative Embedding.md",
     "论文/深度学习/人体姿态/自底向上/Higher HRNET/训练时流程.md",
-    "论文/深度学习/人体姿态/自底向上/Higher HRNET/测试时后处理流程.md",
-    "论文/深度学习/人体姿态/自底向上/Pasted image 20220412114555.png",
-    "论文/深度学习/人体姿态/自底向上/attachments/Pasted image 20220412114802.png"
+    "论文/深度学习/人体姿态/自底向上/Higher HRNET/测试时后处理流程.md"
   ]
 }
