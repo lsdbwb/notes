@@ -148,3 +148,32 @@ void update_global_data()
 ```
 # 内存模型的并发层面
 原子操作如何用来在多线程间同步数据和强制内存修改顺序
+## 简单的例子
+data_ready是原子变量,data是非原子变量。
+- 对于writer thread，对data的写操作在data_ready的写操作之前；
+- 对于reader thread，对data的读操作在对data_ready的读操作为true之后。
+- 因为data_ready是原子变量，data_ready=true是原子操作一定能完成,然后Reader线程的data_ready.load()操作也是原子操作，读到为true后才会继续读data。
+- 使用原子变量data_ready保证了非原子变量data在多线程间的读写的顺序
+![[Pasted image 20220425165607.png]]
+## The synchronizes-with relationship
+- synchronizes-with relationship只出现在原子类型的多个操作之间。强调变量被修改之后的传播关系，即一个变量被某个线程修改后的结果能被其他线程所见到
+- synchronizes-with relationship肯定是happens-before relationship
+## The sequenced-before relationship
+- 表示**单线程之内**两个操作之间先后顺序，这个关系是非对称可传递的
+- 同时还表达了操作结果之间的可见性，即如果A操作在B操作之前，则A操作的结果对于B操作是可见的
+- 同一个线程间的多个语句是满足sequenced-before关系的，单个语句的多个子表达式之间没有
+## The happens-before relationship
+- happens-before关系表示的**不同线程**之间的操作先后顺序，同样的也是非对称、可传递的关系。
+- 在单线程内，如果两个操作满足sequenced-before关系，则一定满足 happens-before关系
+- 在多个线程之间的happens-before关系依赖于synchronizes-with关系，即在某线程的A操作synchronizes-with另一个线程的B操作，则A happens-before B
+## 原子操作的内存顺序
+- 不同的内存模型在不同的cpu架构上有不同的开销
+- 由上到下一致性越弱，由下而上所需的开销越大
+- 默认使用顺序一致性，代码容易理解
+![[Pasted image 20220425174418.png]]
+### 顺序一致性
+- 默认的memory order
+	每个处理器的执行顺序和代码中的顺序(program order)一样
+	所有处理器都只能看到单一的操作顺序
+- 如果对一个原子类型的所有操作都是sequentially consistent的，则多个线程对该原子变量的操作的顺序可以看作单一线程执行出来的某个特定顺序。
+- 一个线程内的操作不能重排序
