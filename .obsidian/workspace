@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "C++/基础/智能指针.md",
+            "file": "项目/c++高性能服务器框架sylar/配置系统/Yaml-cpp.md",
             "mode": "source",
             "source": false
           }
@@ -53,7 +53,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 171
+    "width": 193
   },
   "right": {
     "id": "1ff1298d72456644",
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "C++/基础/智能指针.md",
+                "file": "项目/c++高性能服务器框架sylar/配置系统/Yaml-cpp.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,7 +86,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "C++/基础/智能指针.md",
+                "file": "项目/c++高性能服务器框架sylar/配置系统/Yaml-cpp.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -109,7 +109,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "C++/基础/智能指针.md"
+                "file": "项目/c++高性能服务器框架sylar/配置系统/Yaml-cpp.md"
               }
             }
           }
@@ -122,15 +122,15 @@
   },
   "active": "24d2c287fd55087f",
   "lastOpenFiles": [
-    "C++/基础/智能指针.md",
-    "项目/c++高性能服务器框架sylar/日志系统/重要的算法细节.md",
+    "项目/c++高性能服务器框架sylar/配置系统/Yaml-cpp.md",
+    "项目/c++高性能服务器框架sylar/配置系统/实现细节.md",
+    "项目/c++高性能服务器框架sylar/配置系统/配置系统的设计.md",
+    "项目/c++高性能服务器框架sylar/配置系统/配置系统是服务器框架不可少的功能.md",
     "项目/c++高性能服务器框架sylar/日志系统/日志系统的设计.md",
     "项目/c++高性能服务器框架sylar/日志系统/日志是服务器框架的基础功能.md",
+    "C++/基础/智能指针.md",
+    "项目/c++高性能服务器框架sylar/日志系统/重要的算法细节.md",
     "C++/多线程/c++并发编程实践/设计基于锁的并发数据结构.md",
-    "C++/多线程/c++并发编程实践/C++内存模型和原子操作.md",
-    "论文/深度学习/目标检测/基础/anchor base.md",
-    "论文/深度学习/目标检测/yolov5/未命名.md",
-    "论文/深度学习/目标检测/yolov5/模型整体结构.md",
-    "论文/深度学习/目标检测/yolov5/验证时整体流程.md"
+    "C++/多线程/c++并发编程实践/C++内存模型和原子操作.md"
   ]
 }
