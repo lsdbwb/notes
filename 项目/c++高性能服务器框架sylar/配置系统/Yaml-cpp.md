@@ -29,6 +29,11 @@ companies:
 意思是 companies 属性是一个数组，每一个数组元素又是由 id、name、price 三个属性构成。
 
 # Yaml-cpp简介
-Yaml-cpp是c++编写的YAML语言的解析和编码库。能够反序列化并解析YAML文件为C++对象，也能将C++对象序列化到YAML文件中。
+- Yaml-cpp是c++编写的YAML语言的解析和编码库。能够反序列化并解析YAML文件为C++对象，也能将C++对象序列化到YAML文件中。
+- Yaml文件中的对象都使用一个YAML::Node来表示，相应地Node可以是一个标量，一个序列或者一个map，同时Node和Yaml文件里的对象一样是嵌套的。
 
 # 使用方法
+1. 使用YAML::LoadFromFile()方法即可加载YAML文件到内存中
+	`YAML::Node root = YAML::LoadFile("xxx.yml");`
+	返回根节点root
+2. 从root出发进行遍历即可获得所有的nodes
