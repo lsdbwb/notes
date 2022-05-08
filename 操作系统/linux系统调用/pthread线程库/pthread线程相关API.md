@@ -45,6 +45,10 @@ int pthread_join(pthread_t thread, void **retval);
 ## pthread_rwlock_t
 读写锁
 
+## pthread_mutex_t
+
+## pthread_spinlock_t
+
 # 信号量
 类型 ： sem_t
 - 初始化一个匿名信号量
