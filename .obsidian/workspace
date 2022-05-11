@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "C++/多线程/c++并发编程实践/高级线程管理.md",
+            "file": "C++/协程/协程相关概念.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "C++/多线程/c++并发编程实践/高级线程管理.md",
+                "file": "C++/协程/协程相关概念.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,7 +86,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "C++/多线程/c++并发编程实践/高级线程管理.md",
+                "file": "C++/协程/协程相关概念.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -109,7 +109,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "C++/多线程/c++并发编程实践/高级线程管理.md"
+                "file": "C++/协程/协程相关概念.md"
               }
             }
           }
@@ -122,6 +122,7 @@
   },
   "active": "c37a6c936e3d6af4",
   "lastOpenFiles": [
+    "C++/协程/协程相关概念.md",
     "C++/多线程/c++并发编程实践/高级线程管理.md",
     "C++/多线程/未命名.md",
     "C++/多线程/c++并发编程实践/设计并发代码.md",
@@ -130,7 +131,6 @@
     "C++/多线程/c++并发编程实践/设计无锁数据结构.md",
     "C++/基础/智能指针.md",
     "编译链接/运行库/5、系统调用.md",
-    "编译链接/运行库/4、fread.md",
-    "编译链接/运行库/3、c++全局变量的构造和析构.md"
+    "编译链接/运行库/4、fread.md"
   ]
 }
