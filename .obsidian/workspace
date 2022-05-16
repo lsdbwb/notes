@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "项目/c++高性能服务器框架sylar/协程库封装/基于ucontext封装协程.md",
+            "file": "项目/c++高性能服务器框架sylar/协程库封装/IO协程调度模块.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "项目/c++高性能服务器框架sylar/协程库封装/基于ucontext封装协程.md",
+                "file": "项目/c++高性能服务器框架sylar/协程库封装/IO协程调度模块.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,7 +86,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "项目/c++高性能服务器框架sylar/协程库封装/基于ucontext封装协程.md",
+                "file": "项目/c++高性能服务器框架sylar/协程库封装/IO协程调度模块.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -109,7 +109,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "项目/c++高性能服务器框架sylar/协程库封装/基于ucontext封装协程.md"
+                "file": "项目/c++高性能服务器框架sylar/协程库封装/IO协程调度模块.md"
               }
             }
           }
@@ -122,15 +122,15 @@
   },
   "active": "c37a6c936e3d6af4",
   "lastOpenFiles": [
-    "项目/c++高性能服务器框架sylar/协程库封装/基于ucontext封装协程.md",
+    "项目/c++高性能服务器框架sylar/协程库封装/IO协程调度模块.md",
+    "操作系统/linux系统调用/epoll/epoll实现原理.md",
+    "操作系统/linux系统调用/epoll/epoll相关api.md",
+    "项目/c++高性能服务器框架sylar/协程库封装/协程调度模块.md",
+    "Excalidraw/协程调度模块.excalidraw.md",
+    "Excalidraw/Task.excalidraw.md",
+    "数据库/miniob/底层引擎/各种数据结构.md",
     "C++/协程/协程相关概念.md",
-    "操作系统/linux系统调用/ucontext_t/ucontext_h相关api.md",
-    "C++/多线程/c++并发编程实践/高级线程管理.md",
-    "C++/多线程/未命名.md",
-    "C++/多线程/c++并发编程实践/设计并发代码.md",
-    "C++/多线程/c++并发编程实践/在线程间共享数据.md",
-    "C++/多线程/c++并发编程实践/C++内存模型和原子操作.md",
-    "C++/多线程/c++并发编程实践/设计无锁数据结构.md",
-    "C++/基础/智能指针.md"
+    "项目/c++高性能服务器框架sylar/实现技巧.md",
+    "项目/c++高性能服务器框架sylar/协程库封装/基于ucontext封装协程.md"
   ]
 }
