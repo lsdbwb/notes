@@ -26,6 +26,7 @@ class IOManager : public Scheduler
     std::vector<FdContext*> m_fdContexts;
 ```
 - FdContext用来表示一个IO事件:主要是该事件关联哪个句柄以及事件发生时要进行的操作(回调函数)
+	所有的事件都抽象为读事件或者写事件
 ```c++
     struct FdContext {
         typedef Mutex MutexType;
@@ -52,7 +53,7 @@ class IOManager : public Scheduler
 ```c++
 void IOManager::FdContext::triggerEvent(IOManager::Event event) {
     SYLAR_ASSERT(events & event);
-    // 每次触发事件后，会将该事件剔除
+    // 每次触发事件后，会将该事件剔除， 因此不会持续触发
     events = (Event)(events & ~event);
     // 获取触发事件的上下文
     EventContext& ctx = getContext(event);
@@ -117,7 +118,7 @@ int IOManager::addEvent(int fd, Event event, std::function<void()> cb) {
         contextResize(fd * 1.5);
         fd_ctx = m_fdContexts[fd];
     }
-
+	// 事件已存在则不重复添加
     FdContext::MutexType::Lock lock2(fd_ctx->mutex);
     if(fd_ctx->events & event) {
         SYLAR_LOG_ERROR(g_logger) << "addEvent assert fd=" << fd
@@ -125,12 +126,13 @@ int IOManager::addEvent(int fd, Event event, std::function<void()> cb) {
                     << " fd_ctx.event=" << fd_ctx->events;
         SYLAR_ASSERT(!(fd_ctx->events & event));
     }
-
+	
     int op = fd_ctx->events ? EPOLL_CTL_MOD : EPOLL_CTL_ADD;
     epoll_event epevent;
+    // 设置事件 设置为epoll边缘触发模式
     epevent.events = EPOLLET | fd_ctx->events | event;
     epevent.data.ptr = fd_ctx;
-
+	// 添加事件进epoll
     int rt = epoll_ctl(m_epfd, op, fd, &epevent);
     if(rt) {
         SYLAR_LOG_ERROR(g_logger) << "epoll_ctl(" << m_epfd << ", "
@@ -138,31 +140,36 @@ int IOManager::addEvent(int fd, Event event, std::function<void()> cb) {
             << rt << " (" << errno << ") (" << strerror(errno) << ")";
         return -1;
     }
-
+	// 待执行的IO事件数加一
     ++m_pendingEventCount;
     fd_ctx->events = (Event)(fd_ctx->events | event);
+    // 找到该事件对应的EventContext
     FdContext::EventContext& event_ctx = fd_ctx->getContext(event);
     SYLAR_ASSERT(!event_ctx.scheduler
                 && !event_ctx.fiber
                 && !event_ctx.cb);
 
+	// 对该eventcontext的调度器赋值
     event_ctx.scheduler = Scheduler::GetThis();
+    // 对该eventcontext的回调函数赋值
     if(cb) {
         event_ctx.cb.swap(cb);
     } else {
+	    // 如果没有显式设置回调函数，则继续当前协程执行
         event_ctx.fiber = Fiber::GetThis();
         SYLAR_ASSERT(event_ctx.fiber->getState() == Fiber::EXEC);
     }
     return 0;
 }
 ```
-- 删除事件
+- 删除事件（删除时不会触发事件）
 ```c++
 bool IOManager::delEvent(int fd, Event event) {
     RWMutexType::ReadLock lock(m_mutex);
     if((int)m_fdContexts.size() <= fd) {
         return false;
     }
+    // 根据fd找到该事件对应的fdcontext
     FdContext* fd_ctx = m_fdContexts[fd];
     lock.unlock();
 
@@ -170,13 +177,13 @@ bool IOManager::delEvent(int fd, Event event) {
     if(!(fd_ctx->events & event)) {
         return false;
     }
-
+	// 清除指定的事件
     Event new_events = (Event)(fd_ctx->events & ~event);
     int op = new_events ? EPOLL_CTL_MOD : EPOLL_CTL_DEL;
     epoll_event epevent;
     epevent.events = EPOLLET | new_events;
     epevent.data.ptr = fd_ctx;
-
+	// 让epoll不再关心此事件
     int rt = epoll_ctl(m_epfd, op, fd, &epevent);
     if(rt) {
         SYLAR_LOG_ERROR(g_logger) << "epoll_ctl(" << m_epfd << ", "
@@ -184,21 +191,23 @@ bool IOManager::delEvent(int fd, Event event) {
             << rt << " (" << errno << ") (" << strerror(errno) << ")";
         return false;
     }
-
+	// 待执行事件数减1
     --m_pendingEventCount;
     fd_ctx->events = new_events;
     FdContext::EventContext& event_ctx = fd_ctx->getContext(event);
+    // 重置该fd对应的读或写事件的eventcontext
     fd_ctx->resetContext(event_ctx);
     return true;
 }
 ```
-- 取消事件
+- 取消事件（会触发一次事件回调然后再取消事件）
 ```c++
 bool IOManager::cancelEvent(int fd, Event event) {
     RWMutexType::ReadLock lock(m_mutex);
     if((int)m_fdContexts.size() <= fd) {
         return false;
     }
+    // 根据fd找到 FdContext
     FdContext* fd_ctx = m_fdContexts[fd];
     lock.unlock();
 
@@ -206,13 +215,13 @@ bool IOManager::cancelEvent(int fd, Event event) {
     if(!(fd_ctx->events & event)) {
         return false;
     }
-
+	// 清除指定的事件
     Event new_events = (Event)(fd_ctx->events & ~event);
     int op = new_events ? EPOLL_CTL_MOD : EPOLL_CTL_DEL;
     epoll_event epevent;
     epevent.events = EPOLLET | new_events;
     epevent.data.ptr = fd_ctx;
-
+	// 让epoll不再关心此事件
     int rt = epoll_ctl(m_epfd, op, fd, &epevent);
     if(rt) {
         SYLAR_LOG_ERROR(g_logger) << "epoll_ctl(" << m_epfd << ", "
@@ -220,9 +229,12 @@ bool IOManager::cancelEvent(int fd, Event event) {
             << rt << " (" << errno << ") (" << strerror(errno) << ")";
         return false;
     }
-
+	// 取消事件前触发一次回调
     fd_ctx->triggerEvent(event);
+    // 待执行事件数减1
     --m_pendingEventCount;
     return true;
 }
 ```
+
+# 总结
