@@ -50,8 +50,14 @@ private:
 };
 ```
 
-# hook的实现机制
-动态库的全局符号介入 
+# hook
+替换底层库函数或者系统调用为自己的实现
+## hook需要注意的点
+1. 被hook的函数需要100%模拟原函数的行为，函数参数，返回值，errno都应该一样
+2. 对于socket，因为进行IO调度时，所有的socket默认被设置为非阻塞的，如果用户没有显式地设置socket是非阻塞的，那就要处理好fcntl，不要对用户暴露socket已经是非阻塞的事实
+## hook的实现机制
+1. 动态库的全局符号介入机制[[全局符号介入]]覆盖原来的系统调用
+2. 使用dlsym[[动态链接相关api#dlsym、dlvsym函数]]找回被覆盖的系统调用的函数签名
 
 
 # hook以线程为粒度开启
@@ -177,9 +183,11 @@ int ioctl(int d, unsigned long int request, ...) {
     return ioctl_f(d, request, arg);
 }
 ```
-### fcntl
+### fcntl[[socket相关api#fcntl函数]]
+O_NONBLOCK标志要特殊处理，因为所有参与协程调度的fd都会被设置成非阻塞模式，所以要在应用层维护好用户设置的非阻塞标志。
 
-### setsocketopt
+### setsocketopt[[socket相关api#getsockopt和setsocketopt函数]]
+如果optname为SO_RCVTIMEO和SO_SNDTIMEO等设置读写超时时间的选项，则在应用层也要记录超时时间，方便协程调度获取并处理
 ```c++
 int setsockopt(int sockfd, int level, int optname, const void *optval, socklen_t optlen) {
     if(!sylar::t_hook_enable) {

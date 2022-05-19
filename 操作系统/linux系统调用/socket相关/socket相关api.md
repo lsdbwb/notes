@@ -33,6 +33,21 @@ int connect(int sockfd, const struct sockaddr *addr,socklen_t addrlen);
 5. ETIMEDOUT ： 连接超时。系统有默认超时时间，connect会间隔几秒尝试几次，直到到达最大超时时间，如果仍未连接成功，则返回该错误
 6. 如果connect失败，连接套接字的状态是不确定的，重新连接时应该关闭该套接字再重新创建一个
 
+## getsockopt和setsocketopt函数
+管理sockfd指代的套接字相关的选项,选项可能是多个协议层相关的，通常是在sockets API层面（level = SOL_SOCKET）
+```c++
+int getsockopt(int sockfd, int level, int optname,
+                      void *optval, socklen_t *optlen);
+int setsockopt(int sockfd, int level, int optname,
+                      const void *optval, socklen_t optlen);
+```
+**参数**
+- sockfd : socket的fd
+- level : 设置哪个协议层面的选项
+- optname : 选项名
+- optval : 选项值
+- optlen : 选项值的长度
+
 # 文件描述符相关
 ## close函数
 - 关闭一个文件描述符fd,close后fd不再引用任何一个文件，因此在调用close后该fd就可以被重用了。close fd后和该fd关联的文件的record lock就被释放了
@@ -41,7 +56,7 @@ int connect(int sockfd, const struct sockaddr *addr,socklen_t addrlen);
 
 **notes**
 - 因为操作系统内核缓冲区的存在，close成功并不保证文件的内容被刷入磁盘
-- 如果fd设置了close-on-exec标志，则在execve被成功调用时，该fd会被自动关闭
+- 如果fd设置了close-on-exec标志[[close on exec]]，则在execve被成功调用时，该fd会被自动关闭
 - 多线程下可能会有线程安全问题。（一个线程调用close时另一个线程在系统调用中正在使用该fd）
 
 ## ioctl函数
@@ -49,3 +64,33 @@ int connect(int sockfd, const struct sockaddr *addr,socklen_t addrlen);
 ```c++
 int ioctl(int fd, unsigned long request, ...);
 ```
+
+## fcntl函数
+对打开的文件描述符进行一些操作
+`int fcntl(int fd, int cmd, ... /* arg */ );`
+**参数**
+- fd : 打开的文件描述符
+- cmd : 指示对该文件描述符做哪种操作
+- arg : 做操作时可能需要的参数
+
+**可能的操作**(cmd可能的值)
+- 复制文件描述符
+	- F_DUPFD : 复制一个文件描述符，文件描述符的值为 ： min(当前系统可用的最小值,arg指定的值)
+	- F_DUPFD_CLOEXEC :
+		在F_DUPFD的基础上对复制出的fd设置close-on-exec标志
+		
+- 文件描述符的标志flags
+	- F_GETFD ： 返回该fd上设置的flags
+	- F_SETFD ：设置该fd的flags为arg指定的值
+	
+- 文件描述符对应文件的状态标志status flag
+	- F_GETFL ： 返回该fd对应文件上设置的status flag
+	- F_SETFL ：设置该fd对应文件的status  flag为arg指定的值
+
+- 记录锁（record lock）相关的操作
+
+- Open file description locks
+
+- 管理信号
+
+- 租约(leases)相关
