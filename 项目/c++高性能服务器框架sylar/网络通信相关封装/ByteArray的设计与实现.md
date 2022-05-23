@@ -63,12 +63,12 @@ void ByteArray::setPosition(size_t v) {
 ## 读/写流程
 ### 读ByteArray的操作
 ```c++
-void ByteArray::read(void* buf, size_t size, size_t position) const {
+void ByteArray::read(void* buf, size_t size) const {
     if(size > getReadSize()) {
         throw std::out_of_range("not enough len");
     }
 	// 根据position找到在cur块的操作的位置npos
-    size_t npos = position % m_baseSize;
+    size_t npos = m_position % m_baseSize;
     size_t ncap = m_cur->size - npos;
     size_t bpos = 0;
     Node* cur = m_cur;
@@ -95,6 +95,11 @@ void ByteArray::read(void* buf, size_t size, size_t position) const {
     }
 }
 ```
+- （重载）`read()`（核心）
+功能：将内存块的内容读取到缓冲区中，但不影响当前内存指针指向的位置，使用一个外部传入的内存指针`position`，而不使用当前真正的内存指针`m_position`。即：用户只关心存储的内容，而不关心是否移除内存中的内容，或许还要紧接着写入内容。
+`void read(char *buf, size_t size, size_t position) const;`
+
+
 ### 写ByteArray的操作
 ```c++
 void ByteArray::write(const void* buf, size_t size) {
@@ -231,11 +236,12 @@ static uint32_t EncodeZigzag32(const int32_t& v) {
     }
 }
 ```
-- 使用zigzag压缩算法对uint32_t类型进行压缩
+- 使用zigzag压缩算法[[zigzag算法]]对uint32_t类型进行压缩
 ```c++
 void ByteArray::writeUint32 (uint32_t value) {
     uint8_t tmp[5];
     uint8_t i = 0;
+    // 每一字节的最高位为标志位
     while(value >= 0x80) {
         tmp[i++] = (value & 0x7F) | 0x80;
         value >>= 7;
@@ -244,9 +250,88 @@ void ByteArray::writeUint32 (uint32_t value) {
     write(tmp, i);
 }
 ```
+
 ## 反序列化
 ### 读定长的基本类型
+除了1字节长度的数据，其他 >1字节的数据需要检查**存储的数据字节序是否和用户物理机的字节序相同**，不同需要进行字节序调整交换
+- 接口
+```c++
+/*固定长度读取*/
+int8_t      readFint8();
+uint8_t     readFuint8();
+int16_t     readFint16();
+uint16_t    readFuint16();
+int32_t     readFint32();
+uint32_t    readFuint32();
+int64_t     readFint64();
+uint64_t    readFuint64();
+
+float       readFloat();
+double      readDouble();
+```
+- 接口实现
+```c++
+int8_t ByteArray::readFint8()
+{
+    int8_t v;
+    read((char*)&v, sizeof(v));
+    return v;
+}
+
+
+uint8_t ByteArray::readFuint8()
+{
+    uint8_t v;
+    read((char*)&v, sizeof(v));
+    return v;
+}
+
+#define READ_XX(type)\
+    type v;\
+    read((char*)&v, sizeof(v));\
+    if(m_endian !=  KIT_BYTE_ORDER)\
+        v = byteswap(v);\
+    return v;
+
+
+int16_t ByteArray::readFint16()
+{
+    READ_XX(int16_t);
+}
+```
+
 ### 读variant的压缩编码数据
+- 接口
+```c++
+/*读取varint压缩后的数据*/
+int32_t     readInt32();
+uint32_t    readUint32();
+int64_t     readInt64();
+uint64_t    readUint64();
+```
+- 接口实现
+```c++
+// 先按uint32_t读，读完后恢复为int32_t
+int32_t  ByteArray::readInt32() {
+    return DecodeZigzag32(readUint32());
+}
+
+uint32_t ByteArray::readUint32() {
+    uint32_t result = 0;
+    for(int i = 0; i < 32; i += 7) {
+	    // 读一字节数据
+        uint8_t b = readFuint8();
+        // 根据每一字节的最高位
+        if(b < 0x80) {
+            result |= ((uint32_t)b) << i;
+            break;
+        } else {
+            result |= (((uint32_t)(b & 0x7f)) << i);
+        }
+    }
+    return result;
+}
+```
 
 # 大小端转换
 大小端转换的模板函数
