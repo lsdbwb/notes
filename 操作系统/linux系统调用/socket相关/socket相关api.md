@@ -33,6 +33,51 @@ int connect(int sockfd, const struct sockaddr *addr,socklen_t addrlen);
 5. ETIMEDOUT ： 连接超时。系统有默认超时时间，connect会间隔几秒尝试几次，直到到达最大超时时间，如果仍未连接成功，则返回该错误
 6. 如果connect失败，连接套接字的状态是不确定的，重新连接时应该关闭该套接字再重新创建一个
 
+## bind函数
+给套接字绑定一个地址
+```c++
+int bind(int sockfd, const struct sockaddr *addr,
+                socklen_t addrlen);
+```
+**参数**
+- sockfd : 发起连接的套接字描述符
+- addr : 要连接到的套接字的地址
+- addrlen ： 地址长度
+**返回值**
+成功时返回0，失败返回-1并设置errno
+
+## listen函数
+将sockfd指代的socket标记为监听套接字，该套接字后面便可以调用accept监听连接
+```c++
+int listen(int sockfd, int backlog);
+```
+**参数**
+- sockfd : 套接字描述符
+- backlog：该监听套接字连接队列的最大长度，如果客户端某个连接到达时连接队列已满，则客户可能会收到 ECONNREFUSED；如果底层协议支持重传，则会忽略此次连接，等待客户下次重连
+**返回值**
+成功时返回0，失败返回-1并设置errno
+
+## accept函数
+从监听套接字sockfd连接队列取下第一个连接，并创建一个新的连接套接字，返回该套接字的fd
+```c++
+ int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
+
+int accept4(int sockfd, struct sockaddr *addr,
+                   socklen_t *addrlen, int flags);
+```
+**参数**
+- sockfd : 监听套接字描述符
+- addr ：客户端地址
+- addrlen ：客户端地址长度
+**返回值**
+成功时返回新套接字的fd，失败返回-1并设置errno
+
+**notes**
+1. 如果监听套接字未设置未non-blocking，并且此时连接队列上没有连接，accept会阻塞
+2. 如果监听套接字设置为non-blocking，并且此时连接队列上没有连接，accept会失败并且返回EAGAIN or EWOULDBLOCK
+
+accept4多了一个flags参数，可以设置监听套接字的属性，比如SOCK_NONBLOCK和SOCK_CLOEXEC 
+
 ## getsockopt和setsocketopt函数
 管理sockfd指代的套接字相关的选项,选项可能是多个协议层相关的，通常是在sockets API层面（level = SOL_SOCKET）
 ```c++

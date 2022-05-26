@@ -1,8 +1,8 @@
-## HTTP报文解析流程
+# HTTP协议解析流程
 ![[http server的设计与实现 2022-05-25 16.42.15.excalidraw]]
 
 - 发送过来的HTTP报文使用HttpRequestParser或者HttpResponseParser进行解析，解析后存入HttpRequest或HttpResponse对象[[http协议封装]]
-- HttpRequestParser或者HttpResponseParser内部使用Ragel进行HTTP报文的解析
+- HttpRequestParser或者HttpResponseParser内部使用Ragel编译出的http_parser和httpclient_parser进行HTTP报文的解析
 
 # HTTP解析器具体实现
 最上层HttpRequestParser和HttpResponseParser是对Ragel编译生成的解析器的简单封装，如下所示
