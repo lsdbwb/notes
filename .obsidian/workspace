@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "275314fdea9eefd0",
+        "id": "55b73b4fef47bb2f",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "数据库/数据库理论/锁相关.md",
+            "file": "项目/c++高性能服务器框架sylar/http/http_client/Http客户端的封装.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "数据库/数据库理论/锁相关.md",
+                "file": "项目/c++高性能服务器框架sylar/http/http_client/Http客户端的封装.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,7 +86,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "数据库/数据库理论/锁相关.md",
+                "file": "项目/c++高性能服务器框架sylar/http/http_client/Http客户端的封装.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -109,7 +109,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "数据库/数据库理论/锁相关.md"
+                "file": "项目/c++高性能服务器框架sylar/http/http_client/Http客户端的封装.md"
               }
             }
           }
@@ -120,17 +120,17 @@
     "direction": "horizontal",
     "width": 300
   },
-  "active": "275314fdea9eefd0",
+  "active": "55b73b4fef47bb2f",
   "lastOpenFiles": [
+    "项目/c++高性能服务器框架sylar/http/http_client/Http客户端的封装.md",
+    "项目/c++高性能服务器框架sylar/http/http_client/attachments/Http客户端的封装 2022-05-27 16.19.33.excalidraw.md",
+    "网络编程/http/URI.md",
+    "网络编程/http/http报文格式.md",
+    "项目/c++高性能服务器框架sylar/http/http_server/Http servlet模块.md",
+    "项目/c++高性能服务器框架sylar/http/http_server/HTTP Server.md",
     "数据库/数据库理论/锁相关.md",
     "数据库/数据库理论/事务相关.md",
-    "项目/c++高性能服务器框架sylar/http/Http servlet模块.md",
     "操作系统/linux系统调用/字符串相关/字符串匹配.md",
-    "操作系统/linux系统调用/socket相关/socket相关api.md",
-    "项目/c++高性能服务器框架sylar/http/HTTP Server.md",
-    "项目/c++高性能服务器框架sylar/网络通信相关封装/Stream模块.md",
-    "项目/c++高性能服务器框架sylar/网络通信相关封装/TcpServer类.md",
-    "项目/c++高性能服务器框架sylar/http/http协议解析的设计与实现.md",
-    "项目/c++高性能服务器框架sylar/http/http协议封装.md"
+    "操作系统/linux系统调用/socket相关/socket相关api.md"
   ]
 }
