@@ -171,6 +171,7 @@ HttpResult::ptr HttpConnection::DoGet(Uri::ptr uri
 }
 
 ```
+
 DoRequest方法有三个重载
 - 第一个DoRequest方法根据uri字符串创建Uri对象
 ```c++
@@ -188,6 +189,7 @@ HttpResult::ptr HttpConnection::DoRequest(HttpMethod method
     return DoRequest(method, uri, timeout_ms, headers, body);
 }
 ```
+
 - 第二个DoRequest方法主要是根据Uri对象构造HttpRequest对象
 ```c++
 HttpResult::ptr HttpConnection::DoRequest(HttpMethod method
@@ -225,6 +227,7 @@ HttpResult::ptr HttpConnection::DoRequest(HttpMethod method
 }
 
 ```
+
 - 第三个DoRequest方法创建连接并发送HTTP请求报文
 ```c++
 HttpResult::ptr HttpConnection::DoRequest(HttpRequest::ptr req
@@ -276,9 +279,20 @@ HttpResult::ptr HttpConnection::DoRequest(HttpRequest::ptr req
 }
 ```
 
+- 最终调用sendRequest()将报文转变为字符串发送
+```c++
+int HttpConnection::sendRequest(HttpRequest::ptr rsp) {
+    std::stringstream ss;
+    ss << *rsp;
+    std::string data = ss.str();
+    return writeFixSize(data.c_str(), data.size());
+}
+```
+
 - 解析出HTTP响应报文并保存
 ```c++
 HttpResponse::ptr HttpConnection::recvResponse() {
+	// 使用 HttpResponseParser来解析HTTP响应报文
     HttpResponseParser::ptr parser(new HttpResponseParser);
     uint64_t buff_size = HttpRequestParser::GetHttpRequestBufferSize();
     //uint64_t buff_size = 100;
@@ -296,6 +310,7 @@ HttpResponse::ptr HttpConnection::recvResponse() {
         }
         len += offset;
         data[len] = '\0';
+        // 开始解析
         size_t nparse = parser->execute(data, len, false);
         if(parser->hasError()) {
             close();
@@ -306,11 +321,14 @@ HttpResponse::ptr HttpConnection::recvResponse() {
             close();
             return nullptr;
         }
+        // 直到解析完成
         if(parser->isFinished()) {
             break;
         }
     } while(true);
+    
     auto& client_parser = parser->getParser();
+    // 如果响应报文太长，是采用的chunked分块发送的方式
     if(client_parser.chunked) {
         std::string body;
         int len = offset;
@@ -385,18 +403,110 @@ HttpResponse::ptr HttpConnection::recvResponse() {
     return parser->getData();
 }
 ```
+
 ### HttpConnectionPool类
+**作用**
+- 客户端为了加快响应速度,往往会使用**多个连接套接字**同时向一个HTTP服务端请求资源
+- HttpConnectionPool顾名思义是一个客户端HTTP连接资源池，用来管理向同一个服务端（相同网址+端口）发起请求的客户端连接
+- 同时可以管理每个客户端连接的存活时间和每个连接发送的请求报文最大数量
+
 **成员变量**
 ```c++
-	
+	// 服务端主机名
     std::string m_host;
     std::string m_vhost;
+    // 服务端端口
     uint32_t m_port;
+    // 该连接池最大连接数量
     uint32_t m_maxSize;
+    // 单个连接最大存活时间
     uint32_t m_maxAliveTime;
+    // 单个连接发送请求报文最大数量
     uint32_t m_maxRequest;
 
     MutexType m_mutex;
+    // 该连接池的所有连接
     std::list<HttpConnection*> m_conns;
+    // 该连接池当前连接数量
     std::atomic<int32_t> m_total = {0};
 ```
+
+**成员方法**
+- getConnection方法从连接池中获取一个可用的连接,如果没有可用的,则新建一个
+```c++
+HttpConnection::ptr HttpConnectionPool::getConnection() {
+    uint64_t now_ms = sylar::GetCurrentMS();
+    std::vector<HttpConnection*> invalid_conns;
+    HttpConnection* ptr = nullptr;
+    MutexType::Lock lock(m_mutex);
+    // 先扫描一遍连接池,找出其中已经失效的连接
+    while(!m_conns.empty()) {
+        auto conn = *m_conns.begin();
+        m_conns.pop_front();
+        if(!conn->isConnected()) {
+            invalid_conns.push_back(conn);
+            continue;
+        }
+        if((conn->m_createTime + m_maxAliveTime) > now_ms) {
+            invalid_conns.push_back(conn);
+            continue;
+        }
+        ptr = conn;
+        break;
+    }
+    lock.unlock();
+    // 删除所有失效的连接
+    for(auto i : invalid_conns) {
+        delete i;
+    }
+    // 修改资源池当前连接数量
+    m_total -= invalid_conns.size();
+	// 如果从连接池中没有获取到任何可用的连接,就新建一个
+    if(!ptr) {
+        IPAddress::ptr addr = Address::LookupAnyIPAddress(m_host);
+        if(!addr) {
+            SYLAR_LOG_ERROR(g_logger) << "get addr fail: " << m_host;
+            return nullptr;
+        }
+        addr->setPort(m_port);
+        Socket::ptr sock = Socket::CreateTCP(addr);
+        if(!sock) {
+            SYLAR_LOG_ERROR(g_logger) << "create sock fail: " << *addr;
+            return nullptr;
+        }
+        if(!sock->connect(addr)) {
+            SYLAR_LOG_ERROR(g_logger) << "sock connect fail: " << *addr;
+            return nullptr;
+        }
+
+        ptr = new HttpConnection(sock);
+        ++m_total;
+    }
+    // 返回可用的连接(设置好了释放函数)
+    // 以智能指针的形式返回
+    return HttpConnection::ptr(ptr, std::bind(&HttpConnectionPool::ReleasePtr
+                               , std::placeholders::_1, this));
+
+}
+
+// 每次连接用完时(智能指针引用计数为0时)并不会直接释放该连接,而是检查该连接的状态,如果该连接仍然可用,则重新放回连接池中
+void HttpConnectionPool::ReleasePtr(HttpConnection* ptr, HttpConnectionPool* pool) {
+    ++ptr->m_request;
+    // 检查状态
+    if(!ptr->isConnected()
+            || ((ptr->m_createTime + pool->m_maxAliveTime) >= sylar::GetCurrentMS())
+            || (ptr->m_request >= pool->m_maxRequest)) {
+        delete ptr;
+        --pool->m_total;
+        return;
+    }
+    MutexType::Lock lock(pool->m_mutex);
+    // 依旧可用,放回连接池中
+    pool->m_conns.push_back(ptr);
+}
+
+```
+
+- 也封装了DoGet和DoPost方法
+调用getConnection从连接池中获取一个连接并向服务端发送HTTP请求报文,接收HTTP响应报文并解析成HttpResult
+
