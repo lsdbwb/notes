@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "项目/c++高性能服务器框架sylar/守护进程和环境变量/守护进程.md",
+            "file": "网络编程/网络IO/网络IO模型.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "项目/c++高性能服务器框架sylar/守护进程和环境变量/守护进程.md",
+                "file": "网络编程/网络IO/网络IO模型.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,7 +86,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "项目/c++高性能服务器框架sylar/守护进程和环境变量/守护进程.md",
+                "file": "网络编程/网络IO/网络IO模型.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -109,7 +109,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "项目/c++高性能服务器框架sylar/守护进程和环境变量/守护进程.md"
+                "file": "网络编程/网络IO/网络IO模型.md"
               }
             }
           }
@@ -122,6 +122,8 @@
   },
   "active": "55b73b4fef47bb2f",
   "lastOpenFiles": [
+    "网络编程/网络IO/网络IO模型.md",
+    "网络编程/网络IO/IO多路复用机制.md",
     "项目/c++高性能服务器框架sylar/守护进程和环境变量/守护进程.md",
     "项目/c++高性能服务器框架sylar/守护进程和环境变量/环境变量.md",
     "操作系统/linux系统调用/进程相关/进程相关api.md",
@@ -129,8 +131,6 @@
     "项目/c++高性能服务器框架sylar/http/http_client/attachments/Http客户端的封装 2022-05-27 16.19.33.excalidraw.md",
     "网络编程/http/URI.md",
     "网络编程/http/http报文格式.md",
-    "项目/c++高性能服务器框架sylar/http/http_server/Http servlet模块.md",
-    "项目/c++高性能服务器框架sylar/http/http_server/HTTP Server.md",
-    "数据库/数据库理论/锁相关.md"
+    "项目/c++高性能服务器框架sylar/http/http_server/Http servlet模块.md"
   ]
 }
