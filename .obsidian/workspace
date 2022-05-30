@@ -123,14 +123,14 @@
   "active": "55b73b4fef47bb2f",
   "lastOpenFiles": [
     "网络编程/网络IO/IO多路复用.md",
+    "算法与数据结构/树/红黑树.md",
+    "算法与数据结构/树/B树与B+树.md",
     "网络编程/网络IO/网络IO模型.md",
     "项目/c++高性能服务器框架sylar/守护进程和环境变量/守护进程.md",
     "项目/c++高性能服务器框架sylar/守护进程和环境变量/环境变量.md",
     "操作系统/linux系统调用/进程相关/进程相关api.md",
     "项目/c++高性能服务器框架sylar/http/http_client/Http客户端的封装.md",
     "项目/c++高性能服务器框架sylar/http/http_client/attachments/Http客户端的封装 2022-05-27 16.19.33.excalidraw.md",
-    "网络编程/http/URI.md",
-    "网络编程/http/http报文格式.md",
-    "项目/c++高性能服务器框架sylar/http/http_server/Http servlet模块.md"
+    "网络编程/http/URI.md"
   ]
 }
