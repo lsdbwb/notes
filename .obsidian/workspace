@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "C++/对象模型/多态的实现.md",
+            "file": "C++/多线程/c++并发编程实践/9. 高级线程管理.md",
             "mode": "source",
             "source": false
           }
@@ -40,7 +40,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "future",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "C++/对象模型/多态的实现.md",
+                "file": "C++/多线程/c++并发编程实践/9. 高级线程管理.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,7 +86,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "C++/对象模型/多态的实现.md",
+                "file": "C++/多线程/c++并发编程实践/9. 高级线程管理.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -109,7 +109,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "C++/对象模型/多态的实现.md"
+                "file": "C++/多线程/c++并发编程实践/9. 高级线程管理.md"
               }
             }
           }
@@ -122,15 +122,15 @@
   },
   "active": "55b73b4fef47bb2f",
   "lastOpenFiles": [
-    "C++/对象模型/多态的实现.md",
-    "C++/基础/智能指针.md",
-    "算法与数据结构/树/红黑树.md",
-    "网络编程/网络IO/IO多路复用.md",
-    "算法与数据结构/树/B树与B+树.md",
-    "网络编程/网络IO/网络IO模型.md",
-    "项目/c++高性能服务器框架sylar/守护进程和环境变量/守护进程.md",
-    "项目/c++高性能服务器框架sylar/守护进程和环境变量/环境变量.md",
-    "操作系统/linux系统调用/进程相关/进程相关api.md",
-    "项目/c++高性能服务器框架sylar/http/http_client/Http客户端的封装.md"
+    "C++/多线程/c++并发编程实践/9. 高级线程管理.md",
+    "C++/多线程/c++并发编程实践/4. 线程间同步.md",
+    "C++/多线程/c++并发编程实践/8. 设计并发代码.md",
+    "C++/多线程/c++并发编程实践/6. 设计基于锁的并发数据结构.md",
+    "C++/多线程/c++并发编程实践/7. 设计无锁数据结构.md",
+    "C++/多线程/c++并发编程实践/3. 在线程间共享数据.md",
+    "C++/多线程/c++并发编程实践/5. C++内存模型和原子操作.md",
+    "C++/模板/auto和decltype.md",
+    "C++/基础/指针和引用的区别.md",
+    "C++/基础/智能指针.md"
   ]
 }
