@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "C++/多线程/c++并发编程实践/9. 高级线程管理.md",
+            "file": "C++/多线程/c++并发编程实践/10. 测试和调试多线程应用程序.md",
             "mode": "source",
             "source": false
           }
@@ -40,7 +40,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "future",
+                "query": "cache",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "C++/多线程/c++并发编程实践/9. 高级线程管理.md",
+                "file": "C++/多线程/c++并发编程实践/10. 测试和调试多线程应用程序.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,7 +86,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "C++/多线程/c++并发编程实践/9. 高级线程管理.md",
+                "file": "C++/多线程/c++并发编程实践/10. 测试和调试多线程应用程序.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -109,7 +109,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "C++/多线程/c++并发编程实践/9. 高级线程管理.md"
+                "file": "C++/多线程/c++并发编程实践/10. 测试和调试多线程应用程序.md"
               }
             }
           }
@@ -122,15 +122,15 @@
   },
   "active": "55b73b4fef47bb2f",
   "lastOpenFiles": [
+    "C++/多线程/c++并发编程实践/10. 测试和调试多线程应用程序.md",
     "C++/多线程/c++并发编程实践/9. 高级线程管理.md",
-    "C++/多线程/c++并发编程实践/4. 线程间同步.md",
     "C++/多线程/c++并发编程实践/8. 设计并发代码.md",
+    "C++/多线程/c++并发编程实践/4. 线程间同步.md",
+    "C++/模板/auto和decltype.md",
     "C++/多线程/c++并发编程实践/6. 设计基于锁的并发数据结构.md",
     "C++/多线程/c++并发编程实践/7. 设计无锁数据结构.md",
     "C++/多线程/c++并发编程实践/3. 在线程间共享数据.md",
     "C++/多线程/c++并发编程实践/5. C++内存模型和原子操作.md",
-    "C++/模板/auto和decltype.md",
-    "C++/基础/指针和引用的区别.md",
-    "C++/基础/智能指针.md"
+    "C++/基础/指针和引用的区别.md"
   ]
 }
