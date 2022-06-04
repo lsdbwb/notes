@@ -234,7 +234,7 @@ int epoll_wait(int epfd, struct epoll_event *events,
 
 ### epoll的处理流程
 1. 调用epoll_create创建epollfd以及初始化epoll的内核数据结构
-2. 调用epoll_ctl向epoll中添加关注的事件(内部创建epitem并放入红黑树[[红黑树]]),同时将eppoll_entry挂载到各个文件描述符的等待队列上
+2. 调用epoll_ctl向epoll中添加关注的事件(内部创建epitem并放入红黑树[[2-3树和红黑树]]),同时将eppoll_entry挂载到各个文件描述符的等待队列上
 3. 当某个文件描述符上有事件发生时,会唤醒等待队列上的eppoll_entry,调用eppoll_entry的回调函数,将就绪的epitem移动到就绪链表,并唤醒阻塞在epoll_wait上的线程
 4. 将就绪链表从内核态拷贝一份到用户态,线程被唤醒后遍历该就绪链表并一一处理各个事件
 
