@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "算法与数据结构/排序算法/排序算法.md",
+            "file": "网络编程/http/HTTP的优缺点.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "算法与数据结构/排序算法/排序算法.md",
+                "file": "网络编程/http/HTTP的优缺点.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,7 +86,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "算法与数据结构/排序算法/排序算法.md",
+                "file": "网络编程/http/HTTP的优缺点.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -109,7 +109,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "算法与数据结构/排序算法/排序算法.md"
+                "file": "网络编程/http/HTTP的优缺点.md"
               }
             }
           }
@@ -122,15 +122,15 @@
   },
   "active": "55b73b4fef47bb2f",
   "lastOpenFiles": [
+    "网络编程/http/HTTP的优缺点.md",
+    "网络编程/http/HTTP的特点.md",
+    "网络编程/http/响应状态码.md",
+    "网络编程/http/URI.md",
+    "网络编程/http/请求方法.md",
+    "网络编程/http/http浏览器与服务器交互的流程.md",
+    "网络编程/http/http报文格式.md",
     "算法与数据结构/排序算法/排序算法.md",
     "未命名.md",
-    "算法与数据结构/树/2-3树和红黑树.md",
-    "算法与数据结构/树/B树与B+树.md",
-    "C++/多线程/c++并发编程实践/10. 测试和调试多线程应用程序.md",
-    "C++/多线程/c++并发编程实践/9. 高级线程管理.md",
-    "C++/多线程/c++并发编程实践/8. 设计并发代码.md",
-    "C++/多线程/c++并发编程实践/4. 线程间同步.md",
-    "C++/模板/auto和decltype.md",
-    "C++/多线程/c++并发编程实践/6. 设计基于锁的并发数据结构.md"
+    "算法与数据结构/树/2-3树和红黑树.md"
   ]
 }
