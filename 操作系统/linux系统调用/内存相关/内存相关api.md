@@ -47,3 +47,17 @@ munmap 函数删除从虚拟地址start 开始的，由接下来length 字节组
 
 **返回值**
 成功时返回0，失败时返回-1并设置错误码errno
+
+
+## brk和sbrk
+增大堆区的大小，进程指示堆区大小的brk变量会相应调整
+```c++
+    #include <unistd.h>
+	// 使得brk = addr
+	// 成功时返回0，失败时返回-1并设置errno
+    int brk(void *addr);
+    
+	// 使得brk = brk + increment
+	// 返回原始的brk的值
+    void *sbrk(intptr_t increment);
+```
