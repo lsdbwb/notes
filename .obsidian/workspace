@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "网络编程/http/进阶/HTTP的代理服务.md",
+            "file": "论文/深度学习/目标检测/yolov5/准备数据集/yolov5 COCO数据集.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "网络编程/http/进阶/HTTP的代理服务.md",
+                "file": "论文/深度学习/目标检测/yolov5/准备数据集/yolov5 COCO数据集.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,7 +86,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "网络编程/http/进阶/HTTP的代理服务.md",
+                "file": "论文/深度学习/目标检测/yolov5/准备数据集/yolov5 COCO数据集.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -109,7 +109,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "网络编程/http/进阶/HTTP的代理服务.md"
+                "file": "论文/深度学习/目标检测/yolov5/准备数据集/yolov5 COCO数据集.md"
               }
             }
           }
@@ -122,15 +122,15 @@
   },
   "active": "55b73b4fef47bb2f",
   "lastOpenFiles": [
+    "论文/深度学习/目标检测/yolov5/准备数据集/yolov5 COCO数据集.md",
+    "网络编程/http/HTTPS/对称加密和非对称加密.md",
+    "网络编程/http/HTTPS/HTTPS.md",
+    "网络编程/http/进阶/HTTP的缓存代理.md",
     "网络编程/http/进阶/HTTP的代理服务.md",
+    "算法与数据结构/排序算法/排序算法.md",
     "网络编程/http/进阶/HTTP的缓存控制.md",
     "C和C++/设计模式/c++单例模式.md",
     "C和C++/基础/c和c++中的static关键字.md",
-    "C和C++/多线程/c++并发编程实践/3. 在线程间共享数据.md",
-    "C和C++/多线程/c++并发编程实践/5. C++内存模型和原子操作.md",
-    "C和C++/多线程/c++并发编程实践/8. 设计并发代码.md",
-    "编译链接/运行库/3、c++全局变量的构造和析构.md",
-    "C和C++/基础/C和C++中内联函数.md",
-    "C和C++/基础/c++指针和引用的区别.md"
+    "C和C++/多线程/c++并发编程实践/3. 在线程间共享数据.md"
   ]
 }
