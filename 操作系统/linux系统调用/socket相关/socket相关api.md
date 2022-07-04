@@ -93,6 +93,20 @@ int setsockopt(int sockfd, int level, int optname,
 - optval : 选项值
 - optlen : 选项值的长度
 
+## shutdown函数
+关闭双端连接的一半
+```c++
+#include <sys/socket.h>
+
+int shutdown(int sockfd, int how);
+```
+**参数**:
+- sockfd: 套接字fd
+- how：以哪种方式关闭
+	SHUT_RD ： 关闭读端
+	SHUT_WR ： 关闭写端
+	SHUT_RDWR : 关闭读写端
+
 # 文件描述符相关
 ## close函数
 - 关闭一个文件描述符fd,close后fd不再引用任何一个文件，因此在调用close后该fd就可以被重用了。close fd后和该fd关联的文件的record lock就被释放了
