@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "论文/深度学习/人体姿态/自底向上/YoloPose/YoloPose实现细节.md",
+            "file": "论文/深度学习/目标检测知识蒸馏/LD/LD实现细节.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "论文/深度学习/人体姿态/自底向上/YoloPose/YoloPose实现细节.md",
+                "file": "论文/深度学习/目标检测知识蒸馏/LD/LD实现细节.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,7 +86,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "论文/深度学习/人体姿态/自底向上/YoloPose/YoloPose实现细节.md",
+                "file": "论文/深度学习/目标检测知识蒸馏/LD/LD实现细节.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -109,7 +109,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "论文/深度学习/人体姿态/自底向上/YoloPose/YoloPose实现细节.md"
+                "file": "论文/深度学习/目标检测知识蒸馏/LD/LD实现细节.md"
               }
             }
           }
@@ -122,15 +122,15 @@
   },
   "active": "4011be386485b4c4",
   "lastOpenFiles": [
+    "论文/深度学习/目标检测知识蒸馏/LD/LD实现细节.md",
+    "论文/深度学习/目标检测知识蒸馏/LD/Localization Distillation for Dense Object Detection.md",
+    "论文/深度学习/人体姿态/知识蒸馏/OKDHP.md",
     "论文/深度学习/人体姿态/自底向上/YoloPose/YoloPose实现细节.md",
-    "论文/深度学习/人体姿态/自底向上/YoloPose/attachments/YoloPose实现细节 2022-07-06 11.55.53.excalidraw.md",
-    "论文/深度学习/人体姿态/自底向上/YoloPose/attachments/Pasted image 20220419150609.png",
-    "论文/深度学习/人体姿态/自底向上/YoloPose/attachments/Pasted image 20220419151233.png",
-    "论文/深度学习/人体姿态/自底向上/YoloPose/attachments/Pasted image 20220419152251.png",
-    "论文/深度学习/人体姿态/自底向上/YoloPose/attachments/Pasted image 20220420104750.png",
-    "论文/深度学习/人体姿态/自底向上/YoloPose/attachments/Pasted image 20220420105015.png",
+    "论文/深度学习/目标检测/基础/后处理NMS.md",
     "论文/深度学习/人体姿态/自底向上/YoloPose/YoloPose论文解析.md",
-    "论文/深度学习/目标检测/yolov5/attachments/yolov5s模型结构.jpg",
-    "论文/深度学习/目标检测/yolov5/模型整体结构.md"
+    "论文/深度学习/人体姿态/自底向上/YoloPose/attachments/YoloPose实现细节 2022-07-06 11.55.53.excalidraw.md",
+    "操作系统/linux系统调用/linux系统调用.md",
+    "论文/深度学习/人体姿态/自底向上/YoloPose/attachments/Pasted image 20220419150609.png",
+    "论文/深度学习/人体姿态/自底向上/YoloPose/attachments/Pasted image 20220419151233.png"
   ]
 }
