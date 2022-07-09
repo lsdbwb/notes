@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "4011be386485b4c4",
+        "id": "24d2c287fd55087f",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "论文/深度学习/目标检测知识蒸馏/LD/LD实现细节.md",
+            "file": "网络编程/网络编程模型/Reactor模式.md",
             "mode": "source",
             "source": false
           }
@@ -40,7 +40,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "call",
+                "query": "tag:#锁",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -53,7 +53,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 197
   },
   "right": {
     "id": "1ff1298d72456644",
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "论文/深度学习/目标检测知识蒸馏/LD/LD实现细节.md",
+                "file": "网络编程/网络编程模型/Reactor模式.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,7 +86,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "论文/深度学习/目标检测知识蒸馏/LD/LD实现细节.md",
+                "file": "网络编程/网络编程模型/Reactor模式.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -109,7 +109,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "论文/深度学习/目标检测知识蒸馏/LD/LD实现细节.md"
+                "file": "网络编程/网络编程模型/Reactor模式.md"
               }
             }
           }
@@ -118,19 +118,19 @@
       }
     ],
     "direction": "horizontal",
-    "width": 304
+    "width": 268
   },
-  "active": "4011be386485b4c4",
+  "active": "24d2c287fd55087f",
   "lastOpenFiles": [
-    "论文/深度学习/目标检测知识蒸馏/LD/LD实现细节.md",
-    "论文/深度学习/目标检测知识蒸馏/LD/Localization Distillation for Dense Object Detection.md",
-    "论文/深度学习/人体姿态/知识蒸馏/OKDHP.md",
-    "论文/深度学习/人体姿态/自底向上/YoloPose/YoloPose实现细节.md",
-    "论文/深度学习/目标检测/基础/后处理NMS.md",
-    "论文/深度学习/人体姿态/自底向上/YoloPose/YoloPose论文解析.md",
-    "论文/深度学习/人体姿态/自底向上/YoloPose/attachments/YoloPose实现细节 2022-07-06 11.55.53.excalidraw.md",
-    "操作系统/linux系统调用/linux系统调用.md",
-    "论文/深度学习/人体姿态/自底向上/YoloPose/attachments/Pasted image 20220419150609.png",
-    "论文/深度学习/人体姿态/自底向上/YoloPose/attachments/Pasted image 20220419151233.png"
+    "网络编程/网络编程模型/Reactor模式.md",
+    "网络编程/基础知识/回调函数.md",
+    "论文/深度学习/人体姿态/自底向上/YoloPose/YoloPose.md",
+    "算法与数据结构/排序算法/排序算法.md",
+    "编译链接/运行库/4、fread.md",
+    "编译链接/运行库/5、系统调用.md",
+    "操作系统/内存管理/虚拟内存.md",
+    "操作系统/内存管理/基本概念.md",
+    "操作系统/内存管理/动态内存分配.md",
+    "网络编程/网络IO/IO多路复用.md"
   ]
 }
