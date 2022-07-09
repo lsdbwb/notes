@@ -81,7 +81,7 @@ void set_hook_enable(bool flag) {
 ## sleep系列
 - sleep系统调用是让线程休眠一段时间（以秒为单位）[[sleep系列#sleep函数]]
 - hook后的sleep使用epoll来计时，向epoll中添加一个对应的超时事件，然后当前协程调用yield让出cpu
-- 超时事件发生后，超时事件的回调函数将当前携程又重新加入IOManager的任务队列，等待后续调度执行
+- 超时事件发生后，超时事件的回调函数将当前协程又重新加入IOManager的任务队列，等待后续调度执行
 
 ```c++
 unsigned int sleep(unsigned int seconds) {
