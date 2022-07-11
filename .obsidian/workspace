@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "C和C++/基础/C存储类.md",
+            "file": "算法与数据结构/树/B树与B+树.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "C和C++/基础/C存储类.md",
+                "file": "算法与数据结构/树/B树与B+树.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,7 +86,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "C和C++/基础/C存储类.md",
+                "file": "算法与数据结构/树/B树与B+树.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -109,7 +109,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "C和C++/基础/C存储类.md"
+                "file": "算法与数据结构/树/B树与B+树.md"
               }
             }
           }
@@ -122,15 +122,15 @@
   },
   "active": "55b73b4fef47bb2f",
   "lastOpenFiles": [
+    "算法与数据结构/树/B树与B+树.md",
+    "算法与数据结构/树/2-3树和红黑树.md",
+    "C和C++/协程/协程相关概念.md",
+    "C和C++/模板/auto和decltype.md",
+    "C和C++/基础/c和c++中的const.md",
+    "C和C++/基础/c和c++中extern关键字的作用.md",
+    "C和C++/基础/C和C++中内联函数.md",
     "C和C++/基础/C存储类.md",
     "C和C++/基础/c++智能指针相关.md",
-    "C和C++/基础/c++指针和引用的区别.md",
-    "C和C++/对象模型/多态和对象布局.md",
-    "C和C++/对象模型/多继承下的地址调整.md",
-    "C和C++/多线程/c++并发编程实践/3. 在线程间共享数据.md",
-    "网络编程/TCP/TCP的连接的建立和断开.md",
-    "网络编程/TCP/TCP的状态转换.md",
-    "分布式系统/分布式共识/两将军问题(Two General's Problem).md",
-    "网络编程/TCP/未命名/未命名.md"
+    "C和C++/基础/c++指针和引用的区别.md"
   ]
 }
