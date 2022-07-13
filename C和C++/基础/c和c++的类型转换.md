@@ -202,7 +202,7 @@ int main () {
 ```
 
 
-
+const_cast同样可以作用于`volitale`关键字
 # typeid
 typeid可以用来检查一个表达式的类型，它返回type_info类型(定义在< typeinfo >头文件)。多个type_info之间可以进行比较。
 
