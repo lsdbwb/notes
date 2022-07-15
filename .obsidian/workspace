@@ -7,8 +7,12 @@
         "id": "4011be386485b4c4",
         "type": "leaf",
         "state": {
-          "type": "empty",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "数据库/NoSQL/LsmTree/LSM-tree.md",
+            "mode": "source",
+            "source": false
+          }
         }
       }
     ],
@@ -65,6 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "数据库/NoSQL/LsmTree/LSM-tree.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -81,6 +86,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "数据库/NoSQL/LsmTree/LSM-tree.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -102,7 +108,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "数据库/NoSQL/LsmTree/LSM-tree.md"
+              }
             }
           }
         ],
@@ -114,15 +122,15 @@
   },
   "active": "4011be386485b4c4",
   "lastOpenFiles": [
-    "Pasted image 20220713223403.png.md",
-    "操作系统/进程管理/异常控制流.md",
+    "操作系统/linux系统调用/linux系统调用.md",
     "操作系统/进程管理/进程.md",
+    "操作系统/进程管理/异常控制流.md",
+    "Pasted image 20220713223403.png.md",
     "操作系统/内存管理/动态内存分配.md",
     "操作系统/内存管理/Linux虚拟内存系统.md",
     "操作系统/内存管理/虚拟内存.md",
     "操作系统/内存管理/基本概念.md",
     "C和C++/c++11新特性/function和lambda表达式.md",
-    "C和C++/c++11新特性/auto和decltype.md",
-    "C和C++/c++11新特性/左值右值.md"
+    "C和C++/c++11新特性/auto和decltype.md"
   ]
 }
